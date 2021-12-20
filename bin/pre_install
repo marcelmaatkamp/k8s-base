@@ -1,0 +1,8 @@
+#!/bin/bash
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt install terraform
+sudo \
+ curl --output /usr/local/bin/terragrunt \
+ https://github.com/gruntwork-io/terragrunt/releases/download/v0.35.16/terragrunt_linux_arm64 &&\
+ sudo chmod a+rx /usr/local/bin/terragrunt
