@@ -1,8 +1,23 @@
 #!/bin/bash
+
+# Terraform
+# ---------
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt install terraform
+
+# Terragrunt
+# ----------
 sudo \
- curl --output /usr/local/bin/terragrunt \
- https://github.com/gruntwork-io/terragrunt/releases/download/v0.35.16/terragrunt_linux_arm64 &&\
+ curl -s \
+  --output /usr/local/bin/terragrunt \
+  https://github.com/gruntwork-io/terragrunt/releases/download/v0.35.16/terragrunt_linux_arm64 &&\
  sudo chmod a+rx /usr/local/bin/terragrunt
+
+# kind
+# ----
+sudo \
+ curl -s \
+  --output /usr/local/bin/kind \
+  https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 &&\
+ sudo chmod a+rx /usr/local/bin/kind
